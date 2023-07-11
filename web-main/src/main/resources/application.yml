@@ -1,0 +1,17 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 761567995259-ockuifqlr23ouj5i4b20qandibfpp1i8.apps.googleusercontent.com
+            client-secret: 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
+            scope: profile,email
+  datasource:
+    url: jdbc:postgresql://localhost:5432/oauth
+    username: postgres
+    password: l8n3_a7-c2.E
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
