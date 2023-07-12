@@ -30,7 +30,7 @@ public class SecurityConfiguration {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/register", "/login", "/oauth")
+                .requestMatchers("/register/**", "/login/**" )
                 .permitAll()
                 .requestMatchers("/ad/**")
                 .hasRole("ADMIN")

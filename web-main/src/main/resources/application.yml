@@ -4,8 +4,8 @@ spring:
       client:
         registration:
           google:
-            client-id: 761567995259-ockuifqlr23ouj5i4b20qandibfpp1i8.apps.googleusercontent.com
-            client-secret: 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
+            client-id: 761567995259-oc2fobljc2ga52nkqfje7tn1otfg5vi1.apps.googleusercontent.com
+            client-secret: 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
             scope: profile,email
   datasource:
     url: jdbc:postgresql://localhost:5432/oauth
