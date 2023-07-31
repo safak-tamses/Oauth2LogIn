@@ -2,43 +2,43 @@ package com.example.test.Controller;
 
 import com.example.test.Model.ResponseOrRequest.AuthenticationRequest;
 import com.example.test.Model.ResponseOrRequest.AuthenticationResponse;
-import com.example.test.Model.User;
-import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
-import org.springframework.security.oauth2.core.user.OAuth2User;
-import org.springframework.stereotype.Controller;
 import com.example.test.Service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
-import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.Collections;
-import java.util.Map;
+
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@Controller
+@RestController
 @RequestMapping("")
 @RequiredArgsConstructor
 public class ApiController {
     private final UserService userService;
 
 
-    @GetMapping("/login/google")
-    public Map<String,Object> currentUser(OAuth2AuthenticationToken oAuth2AuthenticationToken){
-        return oAuth2AuthenticationToken.getPrincipal().getAttributes();
+    @GetMapping("/oauth")
+    public String test(){
+        return "test";
+    }
+    @GetMapping("logGoogle")
+    public String t(){
+        return "s";
+    }
+    @GetMapping("/dashboard")
+    public String x(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String uname = authentication.getName();
+        Boolean x = authentication.isAuthenticated();
+
+
+
+        return "Hello " + authentication.getName() + " welcome";
     }
 
-    @GetMapping("/register/google")
-    public RedirectView googleRegister(@AuthenticationPrincipal DefaultOAuth2User oauth2User) {
-
-        return new RedirectView("/home");
-    }
-    @GetMapping("/home")
-    public ResponseEntity home(){
-        return ResponseEntity.ok("Hello");
-    }
 
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> authenticate(

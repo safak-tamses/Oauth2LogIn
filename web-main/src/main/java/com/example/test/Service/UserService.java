@@ -2,7 +2,6 @@ package com.example.test.Service;
 
 import com.example.test.Model.ResponseOrRequest.AuthenticationRequest;
 import com.example.test.Model.ResponseOrRequest.AuthenticationResponse;
-import com.example.test.Model.DTO.UserDTO;
 import com.example.test.Model.Enum.Role;
 import com.example.test.Model.User;
 import com.example.test.Repository.UserRepository;
@@ -12,9 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 
 @Service
@@ -45,6 +43,7 @@ public class UserService {
         userRepository.save(temp);
         return "User created successfully";
     }
+
 
     public AuthenticationResponse userLogin(AuthenticationRequest authenticationRequest) {
         authenticationManager.authenticate(
